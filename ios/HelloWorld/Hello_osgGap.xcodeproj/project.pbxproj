@@ -38,9 +38,6 @@
 		0F19872317E60E2F00B96F23 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F19872217E60E2F00B96F23 /* OpenGLES.framework */; };
 		0F19872517E60E5000B96F23 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F19872417E60E5000B96F23 /* Security.framework */; };
 		0F635D3317E6B36200EA6EF3 /* Cordova.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F635D3217E6B36200EA6EF3 /* Cordova.plist */; };
-		0FE0E5A3183395A6006B245E /* OsgWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE0E5A2183395A6006B245E /* OsgWrapper.m */; };
-		0FE0E5A61833970C006B245E /* OsgBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0FE0E5A51833970C006B245E /* OsgBridge.mm */; };
-		0FE0E5A918339780006B245E /* OsgApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0FE0E5A718339780006B245E /* OsgApp.cpp */; };
 		1D3623260D0F684500981E51 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.mm */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -136,12 +133,6 @@
 		0F19872217E60E2F00B96F23 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		0F19872417E60E5000B96F23 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0F635D3217E6B36200EA6EF3 /* Cordova.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Cordova.plist; path = Hello_osgGap/Cordova.plist; sourceTree = "<group>"; };
-		0FE0E5A1183395A6006B245E /* OsgWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OsgWrapper.h; sourceTree = "<group>"; };
-		0FE0E5A2183395A6006B245E /* OsgWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OsgWrapper.m; sourceTree = "<group>"; };
-		0FE0E5A41833970C006B245E /* OsgBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OsgBridge.h; sourceTree = "<group>"; };
-		0FE0E5A51833970C006B245E /* OsgBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OsgBridge.mm; sourceTree = "<group>"; };
-		0FE0E5A718339780006B245E /* OsgApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OsgApp.cpp; sourceTree = "<group>"; };
-		0FE0E5A818339780006B245E /* OsgApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OsgApp.h; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -406,12 +397,6 @@
 				0F1986EA17E6085E00B96F23 /* osgPlugins.h */,
 				0F11C7B617E6467E0065F6B8 /* OsgGapPlugin.h */,
 				0F11C7B717E646950065F6B8 /* OsgGapPlugin.m */,
-				0FE0E5A1183395A6006B245E /* OsgWrapper.h */,
-				0FE0E5A2183395A6006B245E /* OsgWrapper.m */,
-				0FE0E5A41833970C006B245E /* OsgBridge.h */,
-				0FE0E5A51833970C006B245E /* OsgBridge.mm */,
-				0FE0E5A718339780006B245E /* OsgApp.cpp */,
-				0FE0E5A818339780006B245E /* OsgApp.h */,
 			);
 			name = Plugins;
 			path = Hello_osgGap/Plugins;
@@ -581,9 +566,6 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.mm in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.mm in Sources */,
-				0FE0E5A61833970C006B245E /* OsgBridge.mm in Sources */,
-				0FE0E5A3183395A6006B245E /* OsgWrapper.m in Sources */,
-				0FE0E5A918339780006B245E /* OsgApp.cpp in Sources */,
 				0F1986E917E606EB00B96F23 /* OsgView.mm in Sources */,
 				0F11C7B817E646950065F6B8 /* OsgGapPlugin.m in Sources */,
 			);
@@ -658,7 +640,7 @@
 					"\"$(SRCROOT)/osgGap/3rdParty/include\"",
 				);
 				INFOPLIST_FILE = "Hello_osgGap/Hello_osgGap-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/osgGap/3rdParty/lib\"",
 					"\"$(SRCROOT)/osgGap\"",
@@ -691,7 +673,7 @@
 					"\"$(SRCROOT)/osgGap/3rdParty/include\"",
 				);
 				INFOPLIST_FILE = "Hello_osgGap/Hello_osgGap-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/osgGap/3rdParty/lib\"",
 					"\"$(SRCROOT)/osgGap\"",

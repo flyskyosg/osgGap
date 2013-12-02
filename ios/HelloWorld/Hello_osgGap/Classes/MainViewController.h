@@ -29,14 +29,11 @@
 //#import <Cordova/CDVCommandDelegateImpl.h>
 //#import <Cordova/CDVCommandQueue.h>
 
-@class OsgGapPlugin;
+
 
 @interface MainViewController : CDVViewController
 {
-@public
-    
-    UIWebView* osgWebView;
-    //UIView*    mainView;
+    //UIWebView* osgWebView;
     //UIWindow* m_window;
 }
 //@property (nonatomic, retain) IBOutlet UIWebView* osgWebView;

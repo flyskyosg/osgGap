@@ -37,10 +37,22 @@
 
 - (id)init
 {
+    /** If you need to do any extra app-specific initialization, you can do it here
+     *  -jm
+     **/
     NSHTTPCookieStorage* cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    
+
     [cookieStorage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
-    
+
+    int cacheSizeMemory = 8 * 1024 * 1024; // 8MB
+    int cacheSizeDisk = 32 * 1024 * 1024; // 32MB
+#if __has_feature(objc_arc)
+        NSURLCache* sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:cacheSizeMemory diskCapacity:cacheSizeDisk diskPath:@"nsurlcache"];
+#else
+        NSURLCache* sharedCache = [[[NSURLCache alloc] initWithMemoryCapacity:cacheSizeMemory diskCapacity:cacheSizeDisk diskPath:@"nsurlcache"] autorelease];
+#endif
+    [NSURLCache setSharedURLCache:sharedCache];
+
     self = [super init];
     return self;
 }
@@ -52,85 +64,43 @@
  */
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
-    
-    NSURL* url = [launchOptions objectForKey:UIApplicationLaunchOptionsURLKey];
-    NSString* invokeString = nil;
-    
-    if (url && [url isKindOfClass:[NSURL class]]) {
-        invokeString = [url absoluteString];
-        NSLog(@"OsgGap launchOptions = %@", url);
-    }
-    
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
+
+#if __has_feature(objc_arc)
+    self.window = [[UIWindow alloc] initWithFrame:screenBounds];
+#else
     self.window = [[[UIWindow alloc] initWithFrame:screenBounds] autorelease];
+    
+#endif
     self.window.autoresizesSubviews = YES;
-    
-    
-    //2013. 2. 8 Youna Lee
-    CGRect viewBounds = [[UIScreen mainScreen] applicationFrame];
-    //
-    
-    
-    
-    self.viewController = [[[MainViewController alloc] init] autorelease];
+
+#if __has_feature(objc_arc)
+        self.viewController = [[MainViewController alloc] init];
+#else
+        self.viewController = [[[MainViewController alloc] init] autorelease] ;
+#endif
     self.viewController.useSplashScreen = YES;
+
+    
+    // Set your app's start page by setting the <content src='foo.html' /> tag in config.xml.
+    // If necessary, uncomment the line below to override it.
+    // self.viewController.startPage = @"index.html";
+
+    // NOTE: To customize the view's frame size (which defaults to full screen), override
+    // [self.viewController viewWillAppear:] in your view controller.
+    
+    CGRect viewBounds = [[UIScreen mainScreen] applicationFrame];
+    
     self.viewController.wwwFolderName = @"www";
-    
-    //2013. 2. 9 Youna Lee
-    //self.viewController.startPage = @"browser.html";
-    
     self.viewController.startPage = @"index.html";
-    
-    //2013. 2. 8 Youna Lee
-    //self.viewController.invokeString = invokeString;
     self.viewController.view.frame = viewBounds;
-    
+
+    NSLog(@"didFinishLaunchingWithOptions");
+
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
-    
+
     return YES;
-    
-    
-    
-    
-//    CGRect screenBounds = [[UIScreen mainScreen] bounds];
-//
-//#if __has_feature(objc_arc)
-//    self.window = [[UIWindow alloc] initWithFrame:screenBounds];
-//#else
-//    self.window = [[[UIWindow alloc] initWithFrame:screenBounds] autorelease];
-//    
-//#endif
-//    self.window.autoresizesSubviews = YES;
-//
-//#if __has_feature(objc_arc)
-//        self.viewController = [[MainViewController alloc] init];
-//#else
-//        self.viewController = [[[MainViewController alloc] init] autorelease] ;
-//#endif
-//    self.viewController.useSplashScreen = YES;
-//
-//    
-//    // Set your app's start page by setting the <content src='foo.html' /> tag in config.xml.
-//    // If necessary, uncomment the line below to override it.
-//    // self.viewController.startPage = @"index.html";
-//
-//    // NOTE: To customize the view's frame size (which defaults to full screen), override
-//    // [self.viewController viewWillAppear:] in your view controller.
-//    
-//    CGRect viewBounds = [[UIScreen mainScreen] applicationFrame];
-//    
-//    self.viewController.wwwFolderName = @"www";
-//    self.viewController.startPage = @"index.html";
-//    self.viewController.view.frame = viewBounds;
-//    [self.viewController.view setBackgroundColor: [UIColor clearColor]];
-//
-//    NSLog(@"didFinishLaunchingWithOptions");
-//
-//    self.window.rootViewController = self.viewController;
-//    [self.window makeKeyAndVisible];
-//
-//    return YES;
 }
 
 // this happens while we are running ( in the background, or from within our own app )
@@ -146,7 +116,7 @@
     [self.viewController.webView stringByEvaluatingJavaScriptFromString:jsString];
 
     // all plugins will get the notification, and their handlers will be called
-    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:CDVPluginHandleOpenURLNotification object:url]];
+//    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:CDVPluginHandleOpenURLNotification object:url]];
 
     return YES;
 }

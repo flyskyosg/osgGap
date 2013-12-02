@@ -12,7 +12,6 @@
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
 
-
 @interface OsgView : UIView
 {
     EAGLContext* m_context;
@@ -22,7 +21,7 @@
 //-(id) initWithFrame:(CGRect)frame;
 +(Class) layerClass;
 
--(id) initWithFrame:(CGRect)_frame;
+-(id) initWithWindow:(UIWindow*)window;
 
 -(unsigned int) getWebViewPtr;
 

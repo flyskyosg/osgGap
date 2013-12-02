@@ -72,16 +72,12 @@
     UIView* rootView = [[[[UIApplication sharedApplication] keyWindow] rootViewController] view];
     [rootView setBackgroundColor:[UIColor clearColor]];
     [rootView setOpaque:NO];
-    
     CGRect webViewFrame = [[[rootView subviews] objectAtIndex:0] frame];  // first subview is the UIWebView
     
     if (CGRectEqualToRect(webViewFrame, CGRectZero)) { // UIWebView is sized according to its parent, here it hasn't been sized yet
         self.view.frame = [[UIScreen mainScreen] applicationFrame]; // size UIWebView's parent according to application frame, which will in turn resize the UIWebView
     }
 
-    NSLog(@"rootView : %@", rootView);
-    NSLog(@"webViewFrame Rect x: %d, y: %d", webViewFrame.size.width, webViewFrame.size.height);
-    //self.view = rootView;
 
     [super viewWillAppear:animated];
 }
@@ -121,8 +117,7 @@
 {
     // Black base color for background matches the native apps
     
-    //[self.view addSubview:theWebView];
-    
+    NSLog(@"theWebView in webViewDidFinishLoad : %@", theWebView);
     return [super webViewDidFinishLoad:theWebView];
 
     
@@ -134,21 +129,17 @@
 
 - (void) webViewDidStartLoad:(UIWebView*)theWebView
 {
-    [theWebView setOpaque:NO];
     [theWebView setBackgroundColor:[UIColor clearColor]];
-    
+    [theWebView setOpaque:NO];
     theWebView.scrollView.bounces = NO;
     theWebView.scrollView.scrollEnabled = NO;
     [self hideGradientBackground:theWebView];
-    [theWebView setTag: 200];
-    theWebView.layer.zPosition = 1;
+    [theWebView setTag: 2];
     
+//    id webDocumentView = [theWebView performSelector:@selector(_browserView)];
+//    id backingWebView = [webDocumentView performSelector:@selector(webView)];
+    //[backingWebView _setWebGLEnabled:YES];
     
-    id webDocumentView = [theWebView performSelector:@selector(_browserView)];
-    id backingWebView = [webDocumentView performSelector:@selector(webView)];
-   // [backingWebView _setWebGLEnabled:YES];
-    
-    //webview 자체기능 방지
     //webview 자체기능 방지
     for (id subview in theWebView.subviews){
         if ([[subview class] isSubclassOfClass: [UIScrollView class]]){
@@ -156,15 +147,11 @@
         }
     }
     
-    [self.webView setOpaque:NO];
-    [self.webView setBackgroundColor:[UIColor clearColor]];
-    
-    //[self.view bringSubviewToFront:theWebView];
     [self.view bringSubviewToFront:theWebView];
 
-    osgWebView = theWebView;
+    //osgWebView = theWebView;
 
-    NSLog(@"self View in webViewDidFinishLoad : %@", theWebView);
+    NSLog(@"theWebView in webViewDidStartLoad : %@", theWebView);
     [theWebView setScalesPageToFit:NO];
     return [super webViewDidStartLoad:theWebView];
 }
@@ -199,3 +186,44 @@
 
 @end
 
+//@implementation MainCommandDelegate
+//
+///* To override the methods, uncomment the line in the init function(s)
+//   in MainViewController.m
+// */
+//
+//#pragma mark CDVCommandDelegate implementation
+//
+//- (id)getCommandInstance:(NSString*)className
+//{
+//    return [super getCommandInstance:className];
+//}
+//
+///*
+//   NOTE: this will only inspect execute calls coming explicitly from native plugins,
+//   not the commandQueue (from JavaScript). To see execute calls from JavaScript, see
+//   MainCommandQueue below
+//*/
+//- (BOOL)execute:(CDVInvokedUrlCommand*)command
+//{
+//    return [super execute:command];
+//}
+//
+//- (NSString*)pathForResource:(NSString*)resourcepath;
+//{
+//    return [super pathForResource:resourcepath];
+//}
+//
+//@end
+//
+//@implementation MainCommandQueue
+//
+///* To override, uncomment the line in the init function(s)
+//   in MainViewController.m
+// */
+//- (BOOL)execute:(CDVInvokedUrlCommand*)command
+//{
+//    return [super execute:command];
+//}
+//
+//@end

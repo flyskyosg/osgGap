@@ -25,7 +25,7 @@
         <title>Hello World</title>
         
         <script type="text/javascript" src="cordova-2.2.0.js"></script>
-        <script type="text/javascript" src="osgGap-1.0.1.js"></script>
+        <script type="text/javascript" src="osgGap-1.0.0.js"></script>
         <script type="text/javascript">
             function init()
             {
@@ -33,15 +33,12 @@
                 
                 // Get the osgGap webview instance
                 var webView = osgGap.WebView;
-                var camera = webView.getCamera();
-                camera.setClearColor( 1.0, 0.2, 1.0, 1.0 );
                 
                 // Create nodes
                 var root = new osgGap.Group();
                 var geode = new osgGap.Geode();
                 var matrixTransform = new osgGap.MatrixTransform();
                 
-                geode.getCube( new osgGap.Vec3(0.0, 0.0, 0.0), new osgGap.Vec3(10, 10, 10) );
                 matrixTransform.addChild( geode );
                 root.addChild( matrixTransform );
                 
