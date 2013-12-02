@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>5749ACF7-4968-4AE1-94BF-8AFFFCF957F7</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Hello_osgGap</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>EE8FEDCE-DFCD-4A15-B938-96B967C9712E</key>
+		<string>https://github.com/kmuvcl/osgGap.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ios/HelloWorld/Hello_osgGap.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>EE8FEDCE-DFCD-4A15-B938-96B967C9712E</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/kmuvcl/osgGap.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EE8FEDCE-DFCD-4A15-B938-96B967C9712E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EE8FEDCE-DFCD-4A15-B938-96B967C9712E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>osgGap</string>
+		</dict>
+	</array>
+</dict>
+</plist>

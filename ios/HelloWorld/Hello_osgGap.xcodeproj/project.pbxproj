@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F11C7B817E646950065F6B8 /* OsgGapPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F11C7B717E646950065F6B8 /* OsgGapPlugin.m */; };
-		0F1986E917E606EB00B96F23 /* OsgView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F1986E817E606EB00B96F23 /* OsgView.mm */; };
 		0F19870317E60D2000B96F23 /* libOpenThreads.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1986EC17E60D1F00B96F23 /* libOpenThreads.a */; };
 		0F19870417E60D2000B96F23 /* libosg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1986ED17E60D1F00B96F23 /* libosg.a */; };
 		0F19870517E60D2000B96F23 /* libosgAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1986EE17E60D1F00B96F23 /* libosgAnimation.a */; };
@@ -37,6 +35,11 @@
 		0F19872117E60E2200B96F23 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F19872017E60E2200B96F23 /* CoreVideo.framework */; };
 		0F19872317E60E2F00B96F23 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F19872217E60E2F00B96F23 /* OpenGLES.framework */; };
 		0F19872517E60E5000B96F23 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F19872417E60E5000B96F23 /* Security.framework */; };
+		0F6038EC184C8DFC00EE7A90 /* OsgApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0F6038E1184C8DFC00EE7A90 /* OsgApp.cpp */; };
+		0F6038ED184C8DFC00EE7A90 /* OsgBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F6038E4184C8DFC00EE7A90 /* OsgBridge.mm */; };
+		0F6038EE184C8DFC00EE7A90 /* OsgGapPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6038E6184C8DFC00EE7A90 /* OsgGapPlugin.m */; };
+		0F6038EF184C8DFC00EE7A90 /* OsgView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F6038E9184C8DFC00EE7A90 /* OsgView.mm */; };
+		0F6038F0184C8DFC00EE7A90 /* OsgWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6038EB184C8DFC00EE7A90 /* OsgWrapper.m */; };
 		0F635D3317E6B36200EA6EF3 /* Cordova.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F635D3217E6B36200EA6EF3 /* Cordova.plist */; };
 		1D3623260D0F684500981E51 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.mm */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
@@ -98,11 +101,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0F11C7B617E6467E0065F6B8 /* OsgGapPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OsgGapPlugin.h; sourceTree = "<group>"; };
-		0F11C7B717E646950065F6B8 /* OsgGapPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OsgGapPlugin.m; sourceTree = "<group>"; };
-		0F1986E717E606EB00B96F23 /* OsgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OsgView.h; sourceTree = "<group>"; };
-		0F1986E817E606EB00B96F23 /* OsgView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OsgView.mm; sourceTree = "<group>"; };
-		0F1986EA17E6085E00B96F23 /* osgPlugins.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = osgPlugins.h; sourceTree = "<group>"; };
 		0F1986EB17E60D1F00B96F23 /* libCordova.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCordova.a; path = osgGap/lib/libCordova.a; sourceTree = "<group>"; };
 		0F1986EC17E60D1F00B96F23 /* libOpenThreads.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOpenThreads.a; path = osgGap/lib/libOpenThreads.a; sourceTree = "<group>"; };
 		0F1986ED17E60D1F00B96F23 /* libosg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libosg.a; path = osgGap/lib/libosg.a; sourceTree = "<group>"; };
@@ -132,6 +130,17 @@
 		0F19872017E60E2200B96F23 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		0F19872217E60E2F00B96F23 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		0F19872417E60E5000B96F23 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0F6038E1184C8DFC00EE7A90 /* OsgApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OsgApp.cpp; sourceTree = "<group>"; };
+		0F6038E2184C8DFC00EE7A90 /* OsgApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OsgApp.h; sourceTree = "<group>"; };
+		0F6038E3184C8DFC00EE7A90 /* OsgBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OsgBridge.h; sourceTree = "<group>"; };
+		0F6038E4184C8DFC00EE7A90 /* OsgBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OsgBridge.mm; sourceTree = "<group>"; };
+		0F6038E5184C8DFC00EE7A90 /* OsgGapPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OsgGapPlugin.h; sourceTree = "<group>"; };
+		0F6038E6184C8DFC00EE7A90 /* OsgGapPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OsgGapPlugin.m; sourceTree = "<group>"; };
+		0F6038E7184C8DFC00EE7A90 /* osgPlugins.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = osgPlugins.h; sourceTree = "<group>"; };
+		0F6038E8184C8DFC00EE7A90 /* OsgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OsgView.h; sourceTree = "<group>"; };
+		0F6038E9184C8DFC00EE7A90 /* OsgView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OsgView.mm; sourceTree = "<group>"; };
+		0F6038EA184C8DFC00EE7A90 /* OsgWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OsgWrapper.h; sourceTree = "<group>"; };
+		0F6038EB184C8DFC00EE7A90 /* OsgWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OsgWrapper.m; sourceTree = "<group>"; };
 		0F635D3217E6B36200EA6EF3 /* Cordova.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Cordova.plist; path = Hello_osgGap/Cordova.plist; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -392,11 +401,17 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				0F1986E717E606EB00B96F23 /* OsgView.h */,
-				0F1986E817E606EB00B96F23 /* OsgView.mm */,
-				0F1986EA17E6085E00B96F23 /* osgPlugins.h */,
-				0F11C7B617E6467E0065F6B8 /* OsgGapPlugin.h */,
-				0F11C7B717E646950065F6B8 /* OsgGapPlugin.m */,
+				0F6038E1184C8DFC00EE7A90 /* OsgApp.cpp */,
+				0F6038E2184C8DFC00EE7A90 /* OsgApp.h */,
+				0F6038E3184C8DFC00EE7A90 /* OsgBridge.h */,
+				0F6038E4184C8DFC00EE7A90 /* OsgBridge.mm */,
+				0F6038E5184C8DFC00EE7A90 /* OsgGapPlugin.h */,
+				0F6038E6184C8DFC00EE7A90 /* OsgGapPlugin.m */,
+				0F6038E7184C8DFC00EE7A90 /* osgPlugins.h */,
+				0F6038E8184C8DFC00EE7A90 /* OsgView.h */,
+				0F6038E9184C8DFC00EE7A90 /* OsgView.mm */,
+				0F6038EA184C8DFC00EE7A90 /* OsgWrapper.h */,
+				0F6038EB184C8DFC00EE7A90 /* OsgWrapper.m */,
 			);
 			name = Plugins;
 			path = Hello_osgGap/Plugins;
@@ -563,11 +578,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F6038ED184C8DFC00EE7A90 /* OsgBridge.mm in Sources */,
+				0F6038F0184C8DFC00EE7A90 /* OsgWrapper.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				0F6038EC184C8DFC00EE7A90 /* OsgApp.cpp in Sources */,
+				0F6038EE184C8DFC00EE7A90 /* OsgGapPlugin.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.mm in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.mm in Sources */,
-				0F1986E917E606EB00B96F23 /* OsgView.mm in Sources */,
-				0F11C7B817E646950065F6B8 /* OsgGapPlugin.m in Sources */,
+				0F6038EF184C8DFC00EE7A90 /* OsgView.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

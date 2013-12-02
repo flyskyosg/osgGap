@@ -40,9 +40,9 @@ std::vector<osg::Geode*>        _geodes;
     return [CAEAGLLayer class];
 }
 
--(id) initWithWindow:(UIWindow*)window
+-(id) initWithFrame:(CGRect)_frame
 {
-    CGRect frame = window.frame;
+    CGRect frame = _frame;
     if(self = [super initWithFrame:frame])
     {
         CAEAGLLayer* eaglLayer = (CAEAGLLayer*) super.layer;
@@ -59,8 +59,9 @@ std::vector<osg::Geode*>        _geodes;
         osg::ref_ptr<osg::GraphicsContext::Traits> traits = new osg::GraphicsContext::Traits;
        
         osg::ref_ptr<osgViewer::GraphicsWindowIOS::WindowData> winDataIOS_data = new osgViewer::GraphicsWindowIOS::WindowData;
-        //winDataIOS_data->setCreateTransparentView(true);
-        //osg::ref_ptr<osg::Referenced> windataIOS_data = new osgViewer::GraphicsWindowIOS::WindowData(window);
+        //osg::ref_ptr<osg::Referenced> windataIOS_data = new osgViewer::GraphicsWindowIOS::WindowData(_window);
+        winDataIOS_data->setCreateTransparentView(true);
+        //osg::ref_ptr<osg::Referenced> windataIOS_data = new osgViewer::GraphicsWindowIOS::WindowData(_window);
         
         traits->x = 110;
         traits->y = 110;
@@ -68,16 +69,16 @@ std::vector<osg::Geode*>        _geodes;
         traits->height = frame.size.height;
         traits->depth = 16;
         traits->alpha = 1;
-        traits->windowDecoration = false;
+        traits->windowDecoration = true;
         traits->doubleBuffer = true;
-        //traits->sharedContext = 1;
-        traits->setInheritedWindowPixelFormat = false;
+        //traits->sharedContext = winDataIOS_data;
+        traits->setInheritedWindowPixelFormat = true;
         traits->windowName = "osgVewer";
         traits->inheritedWindowData = winDataIOS_data;
         
-        osg::ref_ptr<osgViewer::GraphicsWindowIOS> winDataIOS = new osgViewer::GraphicsWindowIOS(traits);
+       // osg::ref_ptr<osgViewer::GraphicsWindowIOS> winDataIOS = new osgViewer::GraphicsWindowIOS(traits.get());
         //
-        m_context = winDataIOS->getContext();
+        //m_context = winDataIOS->getContext();
         
         // Create the Graphics Context
         osg::ref_ptr<osg::GraphicsContext> _graphicsContext = osg::GraphicsContext::createGraphicsContext(traits.get());
@@ -85,7 +86,7 @@ std::vector<osg::Geode*>        _geodes;
          //osg::ref_ptr<osg::GraphicsContext> _graphicsContext = winDataIOS->getContext();
         
         _viewer = new osgViewer::Viewer();
-        //_viewer->setUpViewerAsEmbeddedInWindow(traits->x, traits->y, traits->width, traits->height);
+       // _viewer->setUpViewerAsEmbeddedInWindow(traits->x, traits->y, traits->width, traits->height);
         _viewer->setThreadingModel(osgViewer::ViewerBase::SingleThreaded);
         _viewer->getViewerStats()->collectStats("scene", true);
         
@@ -94,14 +95,14 @@ std::vector<osg::Geode*>        _geodes;
         _camera->setViewport(new osg::Viewport(0, 0, traits->width, traits->height));
         _camera->setReferenceFrame(osg::Camera::ABSOLUTE_RF);
         _camera->setClearMask(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        //_camera->setClearColor(osg::Vec4(1.0f, 0.3f, 1.0f, 0.3f));
+        _camera->setClearColor(osg::Vec4(1.0f, 0.3f, 1.0f, 0.3f));
         _camera->setComputeNearFarMode(osgUtil::CullVisitor::DO_NOT_COMPUTE_NEAR_FAR);
        // _camera->setRenderOrder(osg::Camera::POST_RENDER);
         _camera->setAllowEventFocus(true);
         
-        osg::StateSet* stateset = _camera->getOrCreateStateSet();
-        stateset->setMode(GL_BLEND,osg::StateAttribute::ON);
-        stateset->setRenderingHint(osg::StateSet::TRANSPARENT_BIN);
+//        osg::StateSet* stateset = _camera->getOrCreateStateSet();
+//        stateset->setMode(GL_BLEND,osg::StateAttribute::ON);
+//        stateset->setRenderingHint(osg::StateSet::TRANSPARENT_BIN);
         
         
         //_groups = *new std::vector<osg::Group*>();
@@ -142,7 +143,7 @@ std::vector<osg::Geode*>        _geodes;
         //Option//
         
         
-       // _viewer->realize();
+        _viewer->realize();
         
         
         // Set the Render function
@@ -160,8 +161,8 @@ std::vector<osg::Geode*>        _geodes;
 -(void)drawView:(CADisplayLink *)displayLink
 {
     _viewer->frame();
+    //[m_context presentRenderbuffer:GL_RENDERBUFFER_OES];
 }
-
 
 
 
@@ -327,8 +328,12 @@ std::vector<osg::Geode*>        _geodes;
 
 -(void) dealloc
 {
+    if([EAGLContext currentContext] == m_context)
+        [EAGLContext setCurrentContext:nil];
     
+    [m_context release];
     [super dealloc];
+
 }
 
 

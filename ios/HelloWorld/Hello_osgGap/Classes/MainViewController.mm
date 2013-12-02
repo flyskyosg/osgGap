@@ -136,9 +136,9 @@
     [self hideGradientBackground:theWebView];
     [theWebView setTag: 2];
     
-//    id webDocumentView = [theWebView performSelector:@selector(_browserView)];
-//    id backingWebView = [webDocumentView performSelector:@selector(webView)];
-    //[backingWebView _setWebGLEnabled:YES];
+    id webDocumentView = [theWebView performSelector:@selector(_browserView)];
+    id backingWebView = [webDocumentView performSelector:@selector(webView)];
+    [backingWebView _setWebGLEnabled:YES];
     
     //webview 자체기능 방지
     for (id subview in theWebView.subviews){
@@ -185,45 +185,3 @@
 
 
 @end
-
-//@implementation MainCommandDelegate
-//
-///* To override the methods, uncomment the line in the init function(s)
-//   in MainViewController.m
-// */
-//
-//#pragma mark CDVCommandDelegate implementation
-//
-//- (id)getCommandInstance:(NSString*)className
-//{
-//    return [super getCommandInstance:className];
-//}
-//
-///*
-//   NOTE: this will only inspect execute calls coming explicitly from native plugins,
-//   not the commandQueue (from JavaScript). To see execute calls from JavaScript, see
-//   MainCommandQueue below
-//*/
-//- (BOOL)execute:(CDVInvokedUrlCommand*)command
-//{
-//    return [super execute:command];
-//}
-//
-//- (NSString*)pathForResource:(NSString*)resourcepath;
-//{
-//    return [super pathForResource:resourcepath];
-//}
-//
-//@end
-//
-//@implementation MainCommandQueue
-//
-///* To override, uncomment the line in the init function(s)
-//   in MainViewController.m
-// */
-//- (BOOL)execute:(CDVInvokedUrlCommand*)command
-//{
-//    return [super execute:command];
-//}
-//
-//@end

@@ -33,15 +33,8 @@
 
 @interface MainViewController : CDVViewController
 {
-    //UIWebView* osgWebView;
-    //UIWindow* m_window;
+    UIWebView* osgWebView;
+    
 }
-//@property (nonatomic, retain) IBOutlet UIWebView* osgWebView;
 
 @end
-
-//@interface MainCommandDelegate : CDVCommandDelegateImpl
-//@end
-//
-//@interface MainCommandQueue : CDVCommandQueue
-//@end
