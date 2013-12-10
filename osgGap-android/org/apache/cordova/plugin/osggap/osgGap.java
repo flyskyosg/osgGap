@@ -1,6 +1,6 @@
 package org.apache.cordova.plugin.osggap;
 
-import kr.ac.kookmin.vcl.osggap_android.MainActivity;
+import kr.ac.kookmin.vcl.osggap_android.<your_mainActivity>;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -31,13 +31,11 @@ public class osgGap extends CordovaPlugin{
 	public boolean execute (String action, JSONArray args, CallbackContext callbackContext) throws JSONException
 	{
 		
-		_activity = MainActivity._activity;
-		//PluginResult result = null;
+		_activity = <your_mainActivity>._activity;
 		String ptr = "";
 		
 		if(action.equals("getOsgWebView"))
 		{
-			Log.i(TAG, "getOsgWebView");
 			final osgGap _me = this;
 			_viewer = new osgGapView(_activity.getApplicationContext(), true, 16, 8);
 			
@@ -65,13 +63,11 @@ public class osgGap extends CordovaPlugin{
 			
 			_activity.runOnUiThread(addview);
 			
-			//result = new PluginResult(PluginResult.Status.OK, _viewer.getNativePtr());
 			ptr += _viewer.getNativePtr();
 			callbackContext.success(ptr);
 		}
 		else if(action.equals("webView_setSceneData"))
 		{
-			//JSONObject attribs = args.getJSONObject(0);
 			long rootPtr = args.getLong(0);
 			_viewer.webView_setSceneData(rootPtr);
 			
@@ -152,7 +148,6 @@ public class osgGap extends CordovaPlugin{
 			Node child = new Node(child_node);
 			
 			mt.addChild(child);
-			//_viewer.matrixTransform_addChild(mt_node, child_node);
 			callbackContext.success();
 		}
 		
@@ -160,9 +155,7 @@ public class osgGap extends CordovaPlugin{
 		// Camera
 		else if( action.equals("getDefualtCamera"))
 		{
-			
 			ptr += _viewer.getCameraPtr();
-			
 			callbackContext.success(ptr);
 		}
 		else if(action.equals("createCameraNode"))
@@ -190,9 +183,6 @@ public class osgGap extends CordovaPlugin{
 			float g = (float)args.getDouble(2);
 			float b = (float)args.getDouble(3);
 			float a = (float)args.getDouble(4);
-			
-			Log.i(TAG, "native camera setClearColor - " + camera_node + " r : " + r +
-					" g : " + g + " b : " + b + " a : " + a);
 			
 			Camera camera = new Camera(camera_node);
 			camera.setClearColor(r, g, b, a);
@@ -288,17 +278,12 @@ public class osgGap extends CordovaPlugin{
 			callbackContext.success(ptr);
 		}
 
-
-
-		
-		
-		
 		else
 		{
 			return false;
 		}
 		
-		//callbackContext.sendPluginResult(result);
+		
 		
 		return true;
 	}
